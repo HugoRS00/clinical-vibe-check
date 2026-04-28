@@ -1,0 +1,21 @@
+name: 'Kai Clinical Vibe Check'
+description: 'Autopsy for your AI-generated trading code. Stop vibe-coding; start calculating.'
+author: 'TradingWizard.ai'
+branding:
+  icon: 'activity'
+  color: 'green'
+
+inputs:
+  target:
+    description: 'The file or directory to audit'
+    required: true
+    default: '.'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Clinical Vibe Check
+      run: |
+        chmod +x ${{ github.action_path }}/cvc.sh
+        ${{ github.action_path }}/cvc.sh ${{ inputs.target }}
+      shell: bash
